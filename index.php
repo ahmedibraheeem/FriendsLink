@@ -1,3 +1,15 @@
+<?php
+
+  session_start();
+
+  if(isset($_SESSION["UserEmail"])){
+    header("Location: welcome.php");
+    exit();
+  }
+
+ ?>
+
+
 <!DOCTYPE HTML>
 
 <html>
@@ -10,7 +22,23 @@
 </head>
 
 <body>
-    <form id="registerForm" method="POST">
+    <div>
+        <table>
+          <tr>
+            <td><label>Email</label></td>
+            <td><label>Password</label></td>
+          </tr>
+          <tr>
+            <td><input type="text" width="50"></td>
+            <td><input type="password" width="50"></td>
+            <td><input type="submit" width="25"></td>
+          </tr>
+
+        </table>
+
+    </div>
+    <label id="errorLb"></label>
+    <form id="registerForm" method="POST" action="registeration.php">
         <div>
             <label>First Name <span style="color:red">*</span>:</label>
             <input type="text" id="fNameIp">
@@ -62,7 +90,8 @@
         <div>
             <label>Martial Status:</label>
             <select name="mStatusSelection" id="mStatusSel">
-                <option value="Signle">Single</option>
+                <option value="" selected>Select Status</option>
+                <option value="Single">Single</option>
                 <option value="In Relationship">In Relationship</option>
                 <option value="Engaged">Engaged</option>
                 <option value="Married">Married</option>
