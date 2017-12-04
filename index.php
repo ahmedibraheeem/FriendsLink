@@ -2,7 +2,7 @@
 
   session_start();
 
-  if(isset($_SESSION["UserEmail"])){
+  if(isset($_SESSION["id"])){
     header("Location: welcome.php");
     exit();
   }
@@ -23,22 +23,26 @@
 
 <body>
     <div>
+      <form id="loginForm" method="POST" action="login.php">
         <table>
           <tr>
             <td><label>Email</label></td>
             <td><label>Password</label></td>
           </tr>
           <tr>
-            <td><input type="text" width="50"></td>
-            <td><input type="password" width="50"></td>
+            <td><input id="loginEmail" type="text" width="50"></td>
+            <td><input id="loginPassword" type="password" width="50"></td>
             <td><input type="submit" width="25"></td>
           </tr>
-
+          <tr>
+            <td><label id="loginErr"></label></td>
+          </tr>
         </table>
-
+      </form>
     </div>
+    <br>
     <label id="errorLb"></label>
-    <form id="registerForm" method="POST" action="registeration.php">
+    <form id="registerForm" method="POST" action="registeration.php" enctype="multipart/form-data">
         <div>
             <label>First Name <span style="color:red">*</span>:</label>
             <input type="text" id="fNameIp">
@@ -101,6 +105,11 @@
         <div>
             <label>About me:</label>
             <input type="text" id="aboutIp">
+        </div>
+
+        <div>
+          <label>Profile Picture:</label>
+          <input type="file" id="profilePicture" name="profilePicture">
         </div>
         <input type="submit">
     </form>

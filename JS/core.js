@@ -1,5 +1,31 @@
 $(document).ready(function() {
 
+  $("#loginForm").submit(function(event){
+    let loginData = {
+      "email": $("#loginEmail").val(),
+      "password": $("#loginPassword").val()
+    };
+
+    $.ajax({
+      url: "login.php",
+      type: "POST",
+      data: loginData,
+      dataType: "json",
+      encode: true
+    })
+    .done(function(data){
+      if(data.success){
+        location.href = "";
+      } else{
+        $("#loginErr").html(data.error);
+      }
+    });
+
+    event.preventDefault();
+
+  });
+
+
   $("#registerForm").submit(function(event) {
     //console.log(event);
 
@@ -27,16 +53,15 @@ $(document).ready(function() {
     })
 
       .done(function(data){
-        console.log(data.arr);
+        console.log(data);
         if(data.success){
           location.href = "";
         } else{
-          $("#errorLb").html(data.errors.message);
+          $("#errorLb").html(data.error);
         }
       })
       .fail(function(data){
         console.log(data);
-        console.log("ajax failed");
       });
 
       event.preventDefault();

@@ -7,9 +7,9 @@ function validateEmail($email)
     return preg_match($regex, $email);
 }
 
-function Err($data, $errors){
+function Err($data, $errMsg){
   $data["success"] = false;
-  $data["errors"] = $errors;
+  $data["error"] = $errMsg;
   echo json_encode($data);
 }
 

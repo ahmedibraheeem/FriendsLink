@@ -19,8 +19,20 @@
   $hometown = !empty($_POST["hometown"]) ? $_POST["hometown"] : NULL;
   $aboutMe = !empty($_POST["aboutMe"]) ? $_POST["aboutMe"] : NULL;
   $mStatus = !empty($_POST["mStatus"]) ? $_POST["mStatus"] : NULL;
+  // $profilePic = NULL;
+  //
+  // $uploadsDir = "uploads/pp/";
+  // $imgFileName = basename($_FILES["profilePicture"]["name"]);
+  // $imgFileType = pathinfo($imgFileName, PATHINFO_EXTENSION);
+  // $imgPath = $uploadsDir . uniqid("PP_") . "." . $imgFileType;
+  //
+  // $check = getimagesize($_FILES["profilePicture"]["tmp_name"]);
+  // if($check !== false){
+  //   if(move_uploaded_file($_FILES["profilePicture"]["tmp_name"], $imgPath)){
+  //     $profilePic = $imgPath;
+  //   }
+  // }
 
-  $errors = array();
   $data = array();
   $userData = [$fName, $lName, password_hash($password, PASSWORD_BCRYPT), $email, $birthday, $gender, $nickname, $hometown, $aboutMe, $mStatus];
   $userPhones = [$phoneA, $phoneB];
@@ -34,26 +46,22 @@
   */
 
   if(empty($fName) || empty($lName) || empty($password) || empty($email) || empty($birthday)){
-    $errors["message"] = "ERROR: Missing information, All information marked by * is required.";
-    Err($data, $errors);
+    Err($data, "ERROR: Missing information, All information marked by * is required.");
     return;
   }
 
   if(!validateEmail($email)){
-    $errors["message"] = "Invalid email format.";
-    Err($data, $errors);
+    Err($data, "Invalid email format.");
     return;
   }
 
   if(!isUniqueEmail($email)){
-    $errors["message"] = "Email already in use!";
-    Err($data, $errors);
+    Err($data, "Email already in use!");
     return;
   }
 
   if(!empty($nickname) && !isUniqueNickname($nickname)){
-    $errors["message"] = "Nickname already in use!";
-    Err($data, $errors);
+    Err($data, "Nickname already in use!");
     return;
   }
 
@@ -64,7 +72,6 @@
   $id = insertNewUser($userData, $userPhones);
 
   $_SESSION["id"] = $id;
-
   $data["success"] = true;
   echo json_encode($data);
   return;
