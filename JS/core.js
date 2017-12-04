@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 
   $("#registerForm").submit(function(event) {
-    //console.log(event);
+    console.log(event);
 
     var formData = {
       "fName": $("#fNameIp").val(),

@@ -67,7 +67,7 @@
 
     $db = openCon();
 
-    $userSql = "INSERT INTO siteUser(fName, lName, password, email, bDay, Gender, nickname, hometown, about, martialStatus, profilePicture) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    $userSql = "INSERT INTO siteUser(fName, lName, password, email, bDay, Gender, nickname, hometown, about, martialStatus) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
     $phoneSql = "INSERT INTO phoneBook(userID,phoneNumber) VALUES (:id, :num)";
 

@@ -44,20 +44,20 @@
     <label id="errorLb"></label>
     <form id="registerForm" method="POST" action="registeration.php" enctype="multipart/form-data">
         <div>
-            <label>First Name <span style="color:red">*</span>:</label>
-            <input type="text" id="fNameIp">
+            <label for="fName">First Name <span style="color:red">*</span>:</label>
+            <input type="text" value="h" id="fNameIp">
         </div>
         <div>
             <label>Last Name<span style="color:red">*</span>:</label>
-            <input type="text" id="lNameIp">
+            <input type="text" value="b" id="lNameIp">
         </div>
         <div>
             <label>Nickname:</label>
-            <input type="text" id="nickIp">
+            <input type="text" value="" id="nickIp">
         </div>
         <div>
             <label>Password<span style="color:red">*</span>:</label>
-            <input type="password" id="passIp">
+            <input type="password" value="123" id="passIp">
         </div>
         <div>
             <label>Phone Number 1:</label>
@@ -75,7 +75,7 @@
 
         <div>
             <label>Gender <span style="color:red">*</span>:</label>
-            <select name="genderSelection" id="genderSel">
+            <select name="gender" id="genderSel">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
@@ -83,7 +83,7 @@
 
         <div>
             <label>Birthday <span style="color:red">*</span>:</label>
-            <input type="date" id="bDayIp">
+            <input type="date" value="1991-01-01" id="bDayIp">
         </div>
 
         <div>
@@ -93,7 +93,7 @@
 
         <div>
             <label>Martial Status:</label>
-            <select name="mStatusSelection" id="mStatusSel">
+            <select name="mStatus" id="mStatusSel">
                 <option value="" selected>Select Status</option>
                 <option value="Single">Single</option>
                 <option value="In Relationship">In Relationship</option>
@@ -109,7 +109,7 @@
 
         <div>
           <label>Profile Picture:</label>
-          <input type="file" id="profilePicture" name="profilePicture">
+          <input type="file" id="profilePicture">
         </div>
         <input type="submit">
     </form>
