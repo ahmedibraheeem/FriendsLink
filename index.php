@@ -5,11 +5,12 @@
 <head>
 
     <title>Friends Link!</title>
-
+    <script src="JS/jquery.min.js"></script>
+    <script src="JS/core.js"></script>
 </head>
 
 <body>
-    <form method="POST">
+    <form id="registerForm" method="POST">
         <div>
             <label>First Name <span style="color:red">*</span>:</label>
             <input type="text" id="fNameIp">
@@ -61,10 +62,10 @@
         <div>
             <label>Martial Status:</label>
             <select name="mStatusSelection" id="mStatusSel">
-                <option value="signle">Single</option>
-                <option value="in-relationship">In Relationship</option>
-                <option value="engaged">Engaged</option>
-                <option value="married">Married</option>
+                <option value="Signle">Single</option>
+                <option value="In Relationship">In Relationship</option>
+                <option value="Engaged">Engaged</option>
+                <option value="Married">Married</option>
             </select>
         </div>
 
