@@ -11,87 +11,108 @@
 
 
 <!DOCTYPE HTML>
-
 <html>
 
 <head>
-
     <title>Friends Link!</title>
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="JS/jquery.min.js"></script>
     <script src="JS/core.js"></script>
 </head>
 
 <body>
-    <div>
-      <form id="loginForm" method="POST" action="login.php">
-        <table>
-          <tr>
-            <td><label>Email</label></td>
-            <td><label>Password</label></td>
-          </tr>
-          <tr>
-            <td><input id="loginEmail" type="text" width="50"></td>
-            <td><input id="loginPassword" type="password" width="50"></td>
-            <td><input type="submit" width="25"></td>
-          </tr>
-          <tr>
-            <td><label id="loginErr"></label></td>
-          </tr>
-        </table>
-      </form>
+    <div id="loginDiv">
+      <img src="res/img/friendsLinkSmall.png" id="logo">
+        <form id="loginForm" method="POST" action="login.php">
+            <table id="loginTab">
+                <tr>
+                    <td>
+                        <label>Email</label>
+                    </td>
+                    <td>
+                        <label>Password</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="loginEmail" type="text" width="50">
+                    </td>
+                    <td>
+                        <input id="loginPassword" type="password" width="50">
+                    </td>
+                    <td>
+                        <input type="submit" id="submitLog" value="Log In" width="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label id="loginErr"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
     </div>
+
     <br>
-    <label id="errorLb"></label>
-    <form id="registerForm" method="POST" action="registeration.php" enctype="multipart/form-data">
-        <div>
-            <label for="fName">First Name <span style="color:red">*</span>:</label>
-            <input type="text" value="h" id="fNameIp">
+    <br>
+    <br>
+
+    <div>
+    <label id="signupLb">New to FriendsLINK?<br><span style="display:inline-block; width:35px;"></span>
+Sign up now for free!</label>
+    <div id="regDiv">
+      <form id="registerForm" method="POST" action="registeration.php" enctype="multipart/form-data">
+        <div class="regField">
+            <label>First Name <span class="star">*</span>:</label>
+            <input type="text" value="h" id="fNameIp" name="fName">
         </div>
-        <div>
-            <label>Last Name<span style="color:red">*</span>:</label>
-            <input type="text" value="b" id="lNameIp">
+        <div class="regField">
+            <label>Last Name<span class="star">*</span>:</label>
+            <input type="text" value="b" id="lNameIp" name="lName">
         </div>
-        <div>
+        <div class="regField">
             <label>Nickname:</label>
-            <input type="text" value="" id="nickIp">
+            <input type="text" value="" id="nickIp" name="nickname">
         </div>
-        <div>
-            <label>Password<span style="color:red">*</span>:</label>
-            <input type="password" value="123" id="passIp">
+        <div class="regField">
+            <label>Password<span class="star">*</span>:</label>
+            <input type="password" value="123" id="passIp" name="password">
         </div>
-        <div>
+        <div class="regField">
             <label>Phone Number 1:</label>
-            <input type="tel" id="phoneAIp">
+            <input type="tel" id="phoneAIp" name="phoneA">
         </div>
-        <div>
+        <div class="regField">
             <label>Phone Number 2:</label>
-            <input type="tel" id="phoneBIp">
+            <input type="tel" id="phoneBIp" name="phoneB">
         </div>
 
-        <div>
-            <label>Email <span style="color:red">*</span>:</label>
-            <input type="text" id="emailIp">
+        <div class="regField">
+            <label>Email <span class="star">*</span>:</label>
+            <input type="text" id="emailIp" name="email">
         </div>
 
-        <div>
-            <label>Gender <span style="color:red">*</span>:</label>
+        <div class="regField">
+            <label>Gender <span class="star">*</span>:</label>
             <select name="gender" id="genderSel">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
         </div>
 
-        <div>
-            <label>Birthday <span style="color:red">*</span>:</label>
-            <input type="date" value="1991-01-01" id="bDayIp">
+        <div class="regField">
+            <label>Birthday <span class="star">*</span>:</label>
+            <input type="date" value="1991-01-01" id="bDayIp" name="birthday">
         </div>
 
-        <div>
+        <div class="regField">
             <label>Hometown:</label>
-            <input type="text" id="cityIp">
+            <input type="text" id="cityIp" name="hometown">
         </div>
 
-        <div>
+        <div class="regField">
             <label>Martial Status:</label>
             <select name="mStatus" id="mStatusSel">
                 <option value="" selected>Select Status</option>
@@ -102,17 +123,27 @@
             </select>
         </div>
 
-        <div>
+        <div class="regField">
             <label>About me:</label>
-            <input type="text" id="aboutIp">
+            <input type="text" id="aboutIp" name="aboutMe">
         </div>
 
-        <div>
-          <label>Profile Picture:</label>
-          <input type="file" id="profilePicture">
+        <div class="regField">
+            <label>Profile Picture:</label>
+            <input type="file" id="profilePicture" name="profilePicture">
         </div>
-        <input type="submit">
+    
+          <label id="errorLb"></label>
+
+        <div class="regField">
+        <input type="submit" id="submitReg" value="Sign up">
+      </div>
+
+        <br>
+        <label id="notice">All fields marked with <span class="star">*</span> are required.</label>
     </form>
+  </div>
+</div>
 </body>
 
 </html>

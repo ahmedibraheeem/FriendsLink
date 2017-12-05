@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+
+#signupLb {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 15px;
+  padding-left: 22%;
+  font-size: 30px;
+}
+
+#regDiv {
+  display: inline-block;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  float: right;
+  margin-right: 25%;
+}
+
+.regField {
+  padding-bottom: 8px;
+}
+
+.regField label {
+  display: inline-block;
+  width: 150px;
+  text-align: left;
+}
+
+.star {
+  font-weight: 700;
+  color: red;
+  font-style: italic;
+}
+
+.regField input, select {
+  width: 200px;
+  height: 20px;
+  border: 2px solid lightgrey;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#submitLog {
+  background-color: #b80f1a;
+  color: white;
+  width: 70px !important;
+  height: 25px !important;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#submitLog:hover {
+  background-color: #cc0033;
+}
+
+.regField #submitReg {
+  height: 35px;
+  font-size: 20px;
+  background-color: #b80f1a;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#submitReg:hover {
+  background-color: #cc0033;
+}
+
+#loginDiv {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: black;
+  /*background-color: DeepSkyBlue;*/
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  height: 100px;
+  border-bottom: 1px solid black;
+}
+
+#errorLb{
+  color: red;
+  font-weight: bolder;
+  display: block;
+  width: 350px;
+}
+#loginDiv input {
+  width: 100px;
+}
+
+#loginDiv #logo {
+  /*width: 223px;
+  height: 38px;
+  position: relative;
+  top: 45px;
+  margin-left: 420px;
+  margin-top: 0px;*/
+  float: left;
+  margin-left: 20%;
+  padding-top: 40px;
+}
+
+#loginDiv table {
+  display: inline-block;
+  float: right;
+  margin-top: 25px;
+  padding-right: 10%;
+}
+
+#loginDiv table input{
+  height: 20px;
+}
+
+#notice {
+  text-align: center;
+}
