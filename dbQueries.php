@@ -63,8 +63,6 @@
   }
 
   function insertNewUser($userData, $userPhones){
-    //$arr = [$fName, $lName, $password, $email, $birthday, $gender, $nickname, $hometown, $aboutMe, $mStatus];
-
     $db = openCon();
 
     $userSql = "INSERT INTO siteUser(fName, lName, password, email, bDay, Gender, nickname, hometown, about, martialStatus) VALUES(?,?,?,?,?,?,?,?,?,?)";
@@ -73,6 +71,7 @@
 
     $stmt = $db->prepare($userSql);
     $inserted = $stmt->execute($userData);
+
 
     if($inserted){
       $id = $db->lastInsertId();

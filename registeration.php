@@ -19,24 +19,11 @@
   $hometown = !empty($_POST["hometown"]) ? $_POST["hometown"] : NULL;
   $aboutMe = !empty($_POST["aboutMe"]) ? $_POST["aboutMe"] : NULL;
   $mStatus = !empty($_POST["mStatus"]) ? $_POST["mStatus"] : NULL;
-  $profilePic = NULL;
-  //
-  // $uploadsDir = "uploads/pp/";
-  // $imgFileName = basename($_FILES["profilePicture"]["name"]);
-  // $imgFileType = pathinfo($imgFileName, PATHINFO_EXTENSION);
-  // $imgPath = $uploadsDir . uniqid("PP_") . "." . $imgFileType;
 
   $data = array();
-  // $check = getimagesize($_FILES["profilePicture"]["tmp_name"]);
-  // if($check !== false){
-  //   if(move_uploaded_file($_FILES["profilePicture"]["tmp_name"], $imgPath)){
-  //     $profilePic = $imgPath;
-  //     $data["img"] = $profilePic;
-  //
-  //   }
-  // }
 
   $userData = [$fName, $lName, password_hash($password, PASSWORD_BCRYPT), $email, $birthday, $gender, $nickname, $hometown, $aboutMe, $mStatus];
+
   $userPhones = [$phoneA, $phoneB];
 
   /*
@@ -72,7 +59,7 @@
   session_start();
 
   $id = insertNewUser($userData, $userPhones);
-
+  ChromePhp::log("ID: ". $id);
   $_SESSION["id"] = $id;
   $data["success"] = true;
   echo json_encode($data);

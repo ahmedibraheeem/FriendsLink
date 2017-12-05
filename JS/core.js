@@ -27,7 +27,6 @@ $(document).ready(function() {
 
 
   $("#registerForm").submit(function(event) {
-    console.log(event);
 
     var formData = {
       "fName": $("#fNameIp").val(),
@@ -45,15 +44,14 @@ $(document).ready(function() {
     };
 
     $.ajax({
-      type: 'POST',
-      url: 'registeration.php',
+      url: "registeration.php",
+      type: "POST",
       data: formData,
-      dataType: 'json',
+      dataType: "json",
       encode: true
     })
 
       .done(function(data){
-        console.log(data);
         if(data.success){
           location.href = "";
         } else{

@@ -6,7 +6,7 @@ CREATE TABLE siteUser(
   ID INT auto_increment,
   fName VARCHAR(50) not null,
   lName VARCHAR(50) not null,
-  nickname VARCHAR(50) unique not null,
+  nickname VARCHAR(50) unique,
   password VARCHAR(255) not null,
   email VARCHAR(255) unique not null,
   Gender ENUM("Male", "Female") not null,
