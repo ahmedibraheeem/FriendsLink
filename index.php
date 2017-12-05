@@ -3,7 +3,7 @@
   session_start();
 
   if(isset($_SESSION["id"])){
-    header("Location: welcome.php");
+    header("Location: profile.php");
     exit();
   }
 
@@ -59,7 +59,7 @@
     <br>
     <br>
 
-    <div>
+    <div id="regWrapper">
     <label id="signupLb">New to FriendsLINK?<br><span style="display:inline-block; width:35px;"></span>
 Sign up now for free!</label>
     <div id="regDiv">
@@ -132,7 +132,7 @@ Sign up now for free!</label>
             <label>Profile Picture:</label>
             <input type="file" id="profilePicture" name="profilePicture">
         </div>
-    
+
           <label id="errorLb"></label>
 
         <div class="regField">

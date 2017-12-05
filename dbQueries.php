@@ -2,6 +2,24 @@
 
   include_once "dbConn.php";
 
+  function getPhonesById($id){
+    $db = openCon();
+
+    $sql = "SELECT phoneNumber FROM phonebook WHERE userID = :id";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
+    $db = NULL;
+
+    if($stmt->rowCount() > 0){
+      return $stmt->fetchAll(PDO::FETCH_COLUMN,0);
+    }
+
+    return NULL;
+
+  }
+
   function getUserDataByID($id){
     $db = openCon();
 

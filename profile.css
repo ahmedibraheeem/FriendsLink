@@ -1,0 +1,11 @@
+.profilePicture{
+  height: 250px;
+  width: 250px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.infoWrapper{
+  text-align: center;
+}

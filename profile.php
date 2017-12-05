@@ -1,7 +1,7 @@
 <?php
 
-  include "dbQueries.php";
-
+  include_once "dbQueries.php";
+  include_once "helperFunc.php";
   session_start();
 
   if(isset($_SESSION["id"])){
@@ -17,24 +17,20 @@
 
 <html>
 
+<head>
+
+  <title>Profile</title>
+  <link rel="stylesheet" type="text/css" href="profile.css">
+
+</head>
+
 <body>
+
+  <div class="infoWrapper">
   <?php
-
-    echo "Name: " . $userData["fName"] . " " . $userData["lName"] . "<br>";
-    if($userData["nickname"] != NULL) echo "Nickname: " .  $userData["nickname"] . "<br>";
-    echo "Email: " .  $userData["email"] . "<br>";
-    echo "Gender: " .  $userData["Gender"] . "<br>";
-    echo "Birthday: " .  $userData["bDay"] . "<br>";
-    if($userData["hometown"] != NULL) echo "Hometown: " .  $userData["hometown"] . "<br>";
-    if($userData["martialStatus"] != NULL) echo "Martial Status: " .  $userData["martialStatus"] . "<br>";
-    if($userData["about"] != NULL) echo "Bio: " .  $userData["about"] . "<br>";
-    if($userData["profilePicture"] != NULL) {echo "<br><br><br>";
-    echo "<img height=\"150\" src=\"" . $userData["profilePicture"] . "\">";
-    }
-
-
-
+  printUserData2($userData);
    ?>
+ </div>
 
 <form method="get" action="logout.php">
   <input type="submit" value="LOG ME THE FUCK OUT">

@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
+  background-image: url(res/img/bgSmall.png);
+  background-repeat: no-repeat;
 }
 
 #signupLb {
@@ -9,6 +11,7 @@ body {
   font-family: 'Roboto', sans-serif;
   padding-top: 15px;
   padding-left: 22%;
+  color: royalblue;
   font-size: 30px;
 }
 
@@ -20,6 +23,7 @@ body {
   float: right;
   margin-right: 25%;
 }
+
 
 .regField {
   padding-bottom: 8px;

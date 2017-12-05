@@ -52,19 +52,22 @@
     return;
   }
 
-  $result = validateImage($_FILES);
-  if($result["valid"]){
-    if(move_uploaded_file($_FILES["profilePicture"]["tmp_name"], $result["target"])){
-      $profilePicture = $result["target"];
+  if(! ($_FILES["profilePicture"]["size"] == 0) ){
+    $result = validateImage($_FILES);
+    if($result["valid"]){
+      if(move_uploaded_file($_FILES["profilePicture"]["tmp_name"], $result["target"])){
+        $profilePicture = $result["target"];
+      } else{
+        Err($data,"Error uploading your file.");
+        return;
+      }
     } else{
-      Err($data,"Error uploading your file.");
+      Err($data,$result["error"]);
       return;
     }
   } else{
-    Err($data,$result["error"]);
-    return;
+    $profilePicture = "res/img/".strtolower($gender).".png";
   }
-
   //Errors free-zone
 
   session_start();
