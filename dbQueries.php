@@ -4,14 +4,14 @@
 
   function getLimitedRows($limit, $offset, $id){
     $db = openCon();
-
-    $sql = "SELECT ID, nickname, CONCAT(fName, ' ',lName) AS name, profilePicture FROM siteUser WHERE ID <> :id LIMIT :l OFFSET :offest";
+    $sql = "SELECT ID, nickname, CONCAT(fName, ' ',lName) AS name, profilePicture FROM siteUser WHERE ID <> :id LIMIT :lim OFFSET :off";
     $stmt = $db->prepare($sql);
-    $stmt->bindParam(":l", $limit);
-    $stmt->bindParam(":offset", $offset);
-    $stmt->bindParam("id", $id);
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    $stmt->bindParam(":lim", $limit, PDO::PARAM_INT);
+    $stmt->bindParam(":off", $offset, PDO::PARAM_INT);
     $stmt->execute();
     $db = NULL;
+
     if($stmt->rowCount() > 0){
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

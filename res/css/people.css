@@ -79,3 +79,16 @@ body {
   border-radius: 50%;
   border: 1px solid black;
 }
+
+.pagination{
+  text-align: center;
+}
+
+.pagination a{
+  margin: 10px;
+  font-family: "barlow condensed", sans-serif;
+  font-size: 20px;
+  color:white;
+  background-color: darkred;
+  text-decoration:none;
+}
