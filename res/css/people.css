@@ -1,0 +1,81 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.header {
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  height: 100px;
+  position: relative;
+}
+
+.header #logo {
+  display: block;
+  position: absolute;
+  height: 75px;
+  width: 445px;
+  top: 50%;
+  left: 50%;
+  margin-left: -222.5px;
+  margin-top: -37.5px;
+}
+
+.toolbar {
+  font-family: "Ubuntu", sans-serif;
+  color: white;
+  text-align: center;
+  margin-bottom: 15px;
+  background-color: lightsalmon;
+  height: 30px;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+.toolbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.peopleWrapper {
+  text-align: center;
+}
+
+.peopleField {
+  font-family: "barlow condensed", sans-serif;
+  font-size: 25px;
+  background-color: palegreen;
+  color: black;
+  text-align: center;
+  width: 200px;
+  margin: 20px;
+  padding: 10px;
+  display: inline-block;
+}
+
+.peopleField a {
+  color:black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  /*text-align: center;*/
+  /*width: 150px;*/
+  padding: 2px 12px;
+  margin: auto;
+}
+
+.container label{
+  cursor: pointer;
+}
+
+.userPic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid black;
+}

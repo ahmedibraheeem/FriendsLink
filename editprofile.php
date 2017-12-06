@@ -16,7 +16,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="editprofile.css">
+  <link rel="stylesheet" type="text/css" href="res/css/editprofile.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>

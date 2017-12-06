@@ -15,7 +15,7 @@
 
 <head>
     <title>Friends Link!</title>
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="res/css/home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="JS/jquery.min.js"></script>
     <script src="JS/core.js"></script>

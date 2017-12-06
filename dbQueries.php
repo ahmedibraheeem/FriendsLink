@@ -2,6 +2,53 @@
 
   include_once "dbConn.php";
 
+  function getLimitedRows($limit, $offset, $id){
+    $db = openCon();
+
+    $sql = "SELECT ID, nickname, CONCAT(fName, ' ',lName) AS name, profilePicture FROM siteUser WHERE ID <> :id LIMIT :l OFFSET :offest";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":l", $limit);
+    $stmt->bindParam(":offset", $offset);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $db = NULL;
+    if($stmt->rowCount() > 0){
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    return NULL;
+  }
+
+  function rowsCount(){
+    $db = openCon();
+
+    $sql = "SELECT COUNT(*) FROM siteUser";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $arr = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $arr;
+  }
+
+  function getUsersExcept($id){
+    $db = openCon();
+
+    $sql = "SELECT ID, nickname, CONCAT(fName, ' ',lName) AS name, profilePicture FROM siteUser WHERE ID <> :id";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
+    $db = NULL;
+
+    if($stmt->rowCount() > 0){
+      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    return NULL;
+
+  }
+
   function getPhonesById($id){
     $db = openCon();
 

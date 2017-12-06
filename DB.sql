@@ -25,3 +25,20 @@ CREATE TABLE phoneBook(
   PRIMARY KEY(phoneID),
   FOREIGN KEY(userID) REFERENCES siteUser(ID)
 );
+
+CREATE TABLE friends(
+  userID INT NOT NULL,
+  friendID INT NOT NULL,
+  PRIMARY KEY(userID, friendID),
+  FOREIGN KEY(userID) REFERENCES siteUser(ID),
+  FOREIGN KEY(friendID) REFERENCES siteUser(ID)
+);
+
+CREATE TABLE friendrequest(
+  requesterID INT NOT NULL,
+  friendID INT NOT NULL,
+  status INT NOT NULL,
+  PRIMARY KEY(requesterID, friendID),
+  FOREIGN KEY(requesterID) REFERENCES siteUser(ID),
+  FOREIGN KEY(friendID) REFERENCES siteUser(ID)
+);

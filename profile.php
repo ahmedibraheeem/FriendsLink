@@ -4,12 +4,13 @@
   include_once "helperFunc.php";
   session_start();
 
-  if (isset($_SESSION["id"])) {
-      $userData = getUserDataByID($_SESSION["id"]);
-  } else {
-      header("Location: index.php");
-      exit();
+  if (!isset($_SESSION["id"])) {
+    header("Location: index.php");
+    exit();
   }
+
+
+  $userData = getUserDataByID($_SESSION["id"]);
 
   $updateStatus = "";
   $color = "GREEN";
@@ -34,7 +35,7 @@
         <title>Profile</title>
         <script src="JS/jquery.min.js"></script>
         <script src="JS/profile.js"></script>
-        <link rel="stylesheet" type="text/css" href="profile.css">
+        <link rel="stylesheet" type="text/css" href="res/css/profile.css">
         <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     </head>
@@ -46,6 +47,8 @@
       </div>
       <div class="toolbar">
         <a href="profile.php">Profile</a>
+        -
+        <a href="people.php">People</a>
       </div>
         <div class="infoWrapper">
             <div class="imgWrapper">
