@@ -36,6 +36,8 @@
     <a href="profile.php">Profile</a>
     -
     <a href="people.php">People</a>
+    -
+    <a href="friendRequests.php">Friend Requests</a>
   </div>
 
   <div class="peopleWrapper">
@@ -46,7 +48,7 @@
           echo $div;
           echo "<img class=\"userPic\" src=\"".$users[$i]["profilePicture"]."\">";
           echo "<div class =\"container\">";
-          echo "<a href=\"profile.php?".$users[$i]["ID"]."\">";
+          echo "<a href=\"profile.php?id=".$users[$i]["ID"]."\">";
           echo "<label>";
           echo ($users[$i]["nickname"] !== null) ? $users[$i]["nickname"] : $users[$i]["name"];
           echo "</label>";

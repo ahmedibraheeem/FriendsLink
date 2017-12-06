@@ -2,7 +2,35 @@
 
   include_once "dbConn.php";
 
+  function getFriendStatus($reqID, $targetID){
+    $db = openCon();
+
+    $sql = "SELECT status FROM friendrequest WHERE requesterID = :reqid AND friendID = :frid";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":reqid", $reqID);
+    $stmt->bindParam("frid", $targetID);
+    $stmt->execute();
+
+    $resultset = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $resultset;
+  }
+
+  function sendFriendRequest($reqID, $friendID){
+    $db = openCon();
+
+    $zero = 0;
+    $sql = "INSERT INTO friendrequest(requesterID, friendID, status) VALUES(:reqid,:frid, :stt)";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":reqid", $reqID, PDO::PARAM_INT);
+    $stmt->bindParam(":frid", $friendID, PDO::PARAM_INT);
+    $stmt->bindParam(":stt", $zero, PDO::PARAM_INT);
+    $requestStt = $stmt->execute();
+    $db = NULL;
+    return $requestStt;
+  }
+
   function getLimitedRows($limit, $offset, $id){
+
     $db = openCon();
     $sql = "SELECT ID, nickname, CONCAT(fName, ' ',lName) AS name, profilePicture FROM siteUser WHERE ID <> :id LIMIT :lim OFFSET :off";
     $stmt = $db->prepare($sql);

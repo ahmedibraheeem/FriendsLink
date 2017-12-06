@@ -5,25 +5,36 @@
   session_start();
 
   if (!isset($_SESSION["id"])) {
-    header("Location: index.php");
-    exit();
+      header("Location: index.php");
+      exit();
   }
 
 
-  $userData = getUserDataByID($_SESSION["id"]);
+  $requiredID = $_SESSION["id"];
+  $personal = true;
+  $status = -1;
+
+  if (isset($_GET["id"]) && $_GET["id"] != $_SESSION["id"]) {
+      $requiredID = $_GET["id"];
+      $personal = false;
+      $rs = getFriendStatus($_SESSION["id"], $_GET["id"]);
+      $status = (sizeof($rs) == 1) ? $rs[0]["status"] : -1;
+  }
+
+  $userData = getUserDataByID($requiredID);
 
   $updateStatus = "";
   $color = "GREEN";
 
-  if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["updated"])){
-    $status = $_GET["updated"];
+  if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["updated"])) {
+      $status = $_GET["updated"];
 
-    if($status == "1"){
-      $updateStatus = "Updated information successfully!";
-    } else{
-      $color = "RED";
-      $updateStatus = "Updating information failed.";
-    }
+      if ($status == "1") {
+          $updateStatus = "Updated information successfully!";
+      } else {
+          $color = "RED";
+          $updateStatus = "Updating information failed.";
+      }
   }
 
  ?>
@@ -49,6 +60,8 @@
         <a href="profile.php">Profile</a>
         -
         <a href="people.php">People</a>
+        -
+        <a href="friendRequests.php">Friend Requests</a>
       </div>
         <div class="infoWrapper">
             <div class="imgWrapper">
@@ -59,12 +72,12 @@
             </div>
             <div class="infoField" id="name">
                 <?php echo ucfirst($userData["fName"]) . " " . ucfirst($userData["lName"])?>
-                <?php if($userData["nickname"] != NULL){
-                    echo "(".$userData["nickname"].")";
-                    } ?>
+                <?php if ($userData["nickname"] != null) {
+     echo "(".$userData["nickname"].")";
+ } ?>
             </div>
             <hr noshade>
-            <?php if($userData["about"] != NULL):?>
+            <?php if ($userData["about"] != null):?>
             <div class="infoField" id="aboutMe">
                 <?php echo $userData["about"]; ?>
             </div>
@@ -78,12 +91,12 @@
             <div class="infoField" id="birthday">
                 <label>Birthday: </label><?php echo $userData["bDay"] ?>
             </div>
-            <?php if($userData["hometown"] != NULL):?>
+            <?php if ($userData["hometown"] != null):?>
             <div class="infoField" id="hometown">
                 <label>Hometown: </label><?php echo $userData["hometown"]; ?>
             </div>
             <?php endif; ?>
-            <?php if($userData["martialStatus"] != NULL):?>
+            <?php if ($userData["martialStatus"] != null):?>
             <div class="infoField" id="martialStatus">
                 <label>Martial Status: </label><?php echo $userData["martialStatus"]; ?>
             </div>
@@ -91,10 +104,10 @@
             <?php $phones = getPhonesById($userData["ID"]);
                 $div = "<div class=\"infoField\"";
                 $divEnd = "</div>";
-                if($phones !== NULL || !empty($phones)){
-                  for($i = 0; $i < sizeof($phones) ; $i++){
-                    echo $div. "id=\""."phone".(string)($i+1)."\">"."<label>Phone: </label>"."0".$phones[$i].$divEnd;
-                  }
+                if ($phones !== null || !empty($phones)) {
+                    for ($i = 0; $i < sizeof($phones) ; $i++) {
+                        echo $div. "id=\""."phone".(string)($i+1)."\">"."<label>Phone: </label>"."0".$phones[$i].$divEnd;
+                    }
                 }
 
                 ?>
@@ -102,7 +115,17 @@
         </div>
 
         <div class="footerButtons">
+          <?php if ($personal): ?>
           <button id="editBtn">Edit Profile</button>
+        <?php elseif ($status == 0): ?>
+          <button id="requestSent" class="disabled">Request Sent</button>
+        <?php else: ?>
+          <form id="addfriend" style="display:inline-block;" method="POST" action="addFriend.php">
+            <input type="hidden" id="requesterID" value="<?php echo $_SESSION["id"]?>">
+            <input type="hidden" id="friendID" value="<?php echo $_GET["id"]?>">
+          <input type="submit" id="addFriendBtn" value="Add Friend"></button>
+        </form>
+        <?php endif; ?>
           <button id="logoutBtn">Log out</button>
         </div>
 
