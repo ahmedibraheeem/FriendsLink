@@ -16,9 +16,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-
+  <link rel="stylesheet" type="text/css" href="editprofile.css">
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
+  <div class="header">
+    <a href="index.php">
+    <img src="res/img/friendsLink.png" id="logo">
+  </a>
+  </div>
+  <div class="toolbar">
+    <a href="profile.php">Profile</a>
+  </div>
+  <div class="editWrapper">
   <form id="editForm" method="POST" action="updateProfile.php">
     <div class="editFiled">
       <label>First Name:</label>
@@ -30,7 +41,7 @@
     </div>
     <div class="editFiled">
       <label>Nickname:</label>
-      <input type="text" value="<?php echo $userData["nickname"]?>" id="nickname" id="nickname">
+      <input disabled="disabled" type="text" value="<?php echo $userData["nickname"]?>" id="nickname" id="nickname">
     </div>
     <div class="editFiled">
       <label>password:</label>
@@ -62,7 +73,10 @@
             <option value="Married" <?php if($userData["martialStatus"] == "Married") echo "selected";?>>Married</option>
         </select>
     </div>
-    <input type="submit">
+    <div>
+    <input id="update" type="submit" value="Update Info">
+  </div>
   </form>
+</div>
 </body>
 </html>

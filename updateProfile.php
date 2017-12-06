@@ -24,9 +24,8 @@
     }
   }
 
-
   $updateElems = implode(",", $argument);
-
+  $updated = 0;
   if(!empty($updateElems)){
     $db = openCon();
 
@@ -35,8 +34,9 @@
     $stmt = $db->prepare($sql);
     $stmt->bindParam(":id", $_SESSION["id"]);
     $updated = $stmt->execute();
-
-    echo $updated;
   }
+
+  header("Location:profile.php?updated=".$updated);
+  exit();
 
 ?>

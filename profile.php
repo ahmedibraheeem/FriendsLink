@@ -11,6 +11,20 @@
       exit();
   }
 
+  $updateStatus = "";
+  $color = "GREEN";
+
+  if($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["updated"])){
+    $status = $_GET["updated"];
+
+    if($status == "1"){
+      $updateStatus = "Updated information successfully!";
+    } else{
+      $color = "RED";
+      $updateStatus = "Updating information failed.";
+    }
+  }
+
  ?>
 
 <!DOCTYPE HTML>
@@ -31,10 +45,15 @@
       </a>
       </div>
       <div class="toolbar">
-        HI..Bye
+        <a href="profile.php">Profile</a>
       </div>
         <div class="infoWrapper">
+            <div class="imgWrapper">
             <img class="profilePicture" src="<?php echo $userData["profilePicture"] ?>">
+          </div>
+            <div class="infoField" id="updateNotify">
+              <label id="updateStatus" <?php echo "style=\"color:" . $color ."\"";?>><?php echo $updateStatus; ?></label>
+            </div>
             <div class="infoField" id="name">
                 <?php echo ucfirst($userData["fName"]) . " " . ucfirst($userData["lName"])?>
                 <?php if($userData["nickname"] != NULL){
