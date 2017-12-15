@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
-  background-image: url(res/img/bgSmall.png);
+  background-image: url(../img/bgSmall.png);
   background-repeat: no-repeat;
   background-size: cover;
 }

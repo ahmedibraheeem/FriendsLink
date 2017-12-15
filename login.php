@@ -17,7 +17,7 @@ if($userData == NULL){
   $correctPassword = password_verify($password, $userData["password"]);
   if($correctPassword){
     session_start();
-    $_SESSION["id"] = $userData["id"];
+    $_SESSION["id"] = $userData["ID"];
     $data["success"] = true;
     echo json_encode($data);
     return;

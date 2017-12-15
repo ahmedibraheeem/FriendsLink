@@ -1,10 +1,13 @@
 $(document).ready(function() {
 
   $("#loginForm").submit(function(event){
+
     let loginData = {
       "email": $("#loginEmail").val(),
       "password": $("#loginPassword").val()
     };
+
+    console.log(loginData);
 
     $.ajax({
       url: "login.php",
@@ -14,6 +17,7 @@ $(document).ready(function() {
       encode: true
     })
     .done(function(data){
+      console.log("Uhm", data);
       if(data.success){
         location.href = "";
       } else{

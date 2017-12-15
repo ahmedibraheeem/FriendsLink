@@ -29,7 +29,7 @@
   if(!empty($updateElems)){
     $db = openCon();
 
-    $sql = "UPDATE siteUser SET " . $updateElems . " WHERE id = :id";
+    $sql = "UPDATE siteUser SET " . $updateElems . " WHERE ID = :id";
 
     $stmt = $db->prepare($sql);
     $stmt->bindParam(":id", $_SESSION["id"]);

@@ -28,6 +28,10 @@
   </div>
   <div class="toolbar">
     <a href="profile.php">Profile</a>
+    -
+    <a href="people.php">People</a>
+    -
+     <a href="friendRequests.php">Friend Requests (<?php echo numberOfFriendRequests($_SESSION["id"])["count(requesterID)"]; ?>)</a>
   </div>
   <div class="editWrapper">
   <form id="editForm" method="POST" action="updateProfile.php">

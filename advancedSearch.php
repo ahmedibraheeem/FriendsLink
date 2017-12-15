@@ -4,17 +4,26 @@
 
   session_start();
 
-  if (!isset($_SESSION["id"])) {
+  if (!isset($_SESSION["id"]) || $_SERVER['REQUEST_METHOD']!="POST") {
       header("Location:index.php");
       exit();
   }
 
+  $email = $_POST["email"];
+  $fName = $_POST["fName"];
+  $lName = $_POST["lName"];
+  $hometown = $_POST["hometown"];
+
+  //print_r($_POST);
+
   $page = isset($_GET["pages"]) ? $_GET["pages"] : 1;
-  $rows = rowsCount();
-  $count = intval($rows["COUNT(*)"]) - 1;
   $pageLimit = 10;
   $offset = ($page - 1) * $pageLimit;
-  $users = getLimitedRows($pageLimit, $offset, $_SESSION["id"]);
+  $result = advSearch($email, $fName, $lName, $hometown, $pageLimit, $offset);
+  $rows = $result["count"];
+  $count = intval($rows) - 1;
+  $users = $result["data"];
+  print_r($users);
   $totalPages = ceil($count / $pageLimit);
 ?>
 <!DOCTYPE HTML>
@@ -39,6 +48,8 @@
     -
      <a href="friendRequests.php">Friend Requests (<?php echo numberOfFriendRequests($_SESSION["id"])["count(requesterID)"]; ?>)</a>
   </div>
+
+  <p>Search Result</p>
 
   <div class="peopleWrapper">
     <?php

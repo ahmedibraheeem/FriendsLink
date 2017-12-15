@@ -65,7 +65,8 @@ body {
   color: white;
   border: 0;
   font-size: 16px;
-  padding: 6px;
+  padding: 10px;
+  margin: 3px;
 }
 
 .accept {
@@ -82,4 +83,20 @@ body {
 .decline:hover{
   background-color: #ff7f68;
   cursor: pointer;
+}
+
+.requests{
+  text-align: center;
+}
+
+.requestWrapper{
+  margin: 5px;
+  display: inline-block;
+}
+
+.lonely{
+  font-family: "barlow condensed", sans-serif;
+  font-weight: lighter;
+  color: tomato;
+  font-size: 26px;
 }

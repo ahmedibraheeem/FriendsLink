@@ -61,7 +61,8 @@
         -
         <a href="people.php">People</a>
         -
-        <a href="friendRequests.php">Friend Requests</a>
+         <a href="friendRequests.php">Friend Requests (<?php echo numberOfFriendRequests($_SESSION["id"])["count(requesterID)"]; ?>)</a>
+        - <a href="search.php">Search</a>
       </div>
         <div class="infoWrapper">
             <div class="imgWrapper">
@@ -77,7 +78,7 @@
  } ?>
             </div>
             <hr noshade>
-            <?php if ($userData["about"] != null):?>
+            <?php if ($userData["about"] != null && ($status == 1 || $personal)):?>
             <div class="infoField" id="aboutMe">
                 <?php echo $userData["about"]; ?>
             </div>
@@ -88,9 +89,11 @@
             <div class="infoField" id="gender">
                 <?php echo $userData["Gender"] ?>
             </div>
+            <?php if($status == 1 || $personal):?>
             <div class="infoField" id="birthday">
                 <label>Birthday: </label><?php echo $userData["bDay"] ?>
             </div>
+          <?php endif;?>
             <?php if ($userData["hometown"] != null):?>
             <div class="infoField" id="hometown">
                 <label>Hometown: </label><?php echo $userData["hometown"]; ?>
@@ -119,6 +122,10 @@
           <button id="editBtn">Edit Profile</button>
         <?php elseif ($status == 0): ?>
           <button id="requestSent" class="disabled">Request Sent</button>
+        <?php elseif ($status == 1): ?>
+          <button id="requestSent" class="disabled">Friends</button>
+        <?php elseif ($status == 2): ?>
+          <button id="requestSent" class="disabled">Request Declined</button>
         <?php else: ?>
           <form id="addfriend" style="display:inline-block;" method="POST" action="addFriend.php">
             <input type="hidden" id="requesterID" value="<?php echo $_SESSION["id"]?>">

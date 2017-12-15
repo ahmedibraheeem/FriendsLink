@@ -2,15 +2,68 @@
 
   include_once "dbConn.php";
 
+  function advSearch($email, $f, $l, $ht, $lim, $off){
+    $db = openCon();
+    $ht = "%" . $ht . "%";
+    $f = "%". $f . "%";
+    $l = "%" .$l."%";
+
+    $sql = "SELECT ID, nickname, CONCAT(fName, ' ',lName) AS name, profilePicture FROM siteUser WHERE email = :email OR fName LIKE :f OR lName LIKE :l OR hometown LIKE :ht LIMIT :lim OFFSET :off";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":f", $f);
+    $stmt->bindParam(":l", $l);
+    $stmt->bindParam(":ht", $ht);
+    $stmt->bindParam(":lim", $lim, PDO::PARAM_INT);
+    $stmt->bindParam(":off", $off, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    $db = null;
+    $result = array();
+    $result["data"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result["count"] = $stmt->rowCount();
+    return $result;
+  }
+
+  function numberOfFriendRequests($id){
+    $db = openCon();
+    $sql = "SELECT count(requesterID) FROM friendrequest where friendID = :id AND status = 0";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+  function getFriendRequests($id){
+    $db = openCon();
+
+    $sql = "SELECT ID, nickname, concat(fName, \" \", lName) as name, profilePicture  from siteuser WHERE ID in (SELECT requesterID FROM friendrequest where friendID = :id AND status = 0)";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
+    $db = NULL;
+
+    $result = array();
+    $result["friends"] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result["num"] = $stmt->rowCount();
+
+    return $result;
+
+  }
+
   function getFriendStatus($reqID, $targetID){
     $db = openCon();
 
-    $sql = "SELECT status FROM friendrequest WHERE requesterID = :reqid AND friendID = :frid";
+    $sql = "SELECT status FROM friendrequest WHERE (requesterID = :reqid AND friendID = :frid) OR (requesterID = :frid AND friendID = :reqid)" ;
     $stmt = $db->prepare($sql);
     $stmt->bindParam(":reqid", $reqID);
     $stmt->bindParam("frid", $targetID);
     $stmt->execute();
-
+    $db = NULL;
     $resultset = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $resultset;
   }

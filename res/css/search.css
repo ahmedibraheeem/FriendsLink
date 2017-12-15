@@ -41,56 +41,34 @@ body{
   text-decoration: none;
 }
 
-.imgWrapper{
-  padding-bottom: 10px;
-}
-.profilePicture {
-  height: 250px;
-  width: 250px;
-  object-fit: contain;
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
-.infoWrapper {
+.searchWrapper{
   text-align: center;
 }
 
-.infoWrapper hr {
-  border-color: darkred;
-  width: 10%;
+.searchFiled{
+  padding-bottom: 7px;
 }
 
-.infoWrapper #name {
-  color: black;
-  padding-top: 15px;
-  font-size: 30px;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: bold;
-  letter-spacing: 2px;
+.searchFiled label{
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  display: inline-block;
+  width: 120px;
+  text-align: left;
 }
 
-.infoWrapper:not(#name) {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 22px;
-  font-weight: light;
-  color: grey;
+.searchFiled input,select{
+  width: 150px;
+  height:25px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.infoField #updateStatus{
-  font-size: 25px;
-}
-
-.footerButtons{
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.footerButtons button,input{
+#search{
   display: inline-block;
   background-color: #b80f1a;
   color: white;
-  /*width: 70px !important;*/
   height: 25px !important;
   font-weight: bold;
   font-size: 16px;
@@ -98,15 +76,6 @@ body{
   cursor: pointer;
 }
 
-.footerButtons button:hover,input:hover{
+#search:hover{
   background-color: #cc0033;
-}
-
-.disabled{
-  opacity: 0.3;
-  cursor: default !important;
-}
-
-#requestSent:hover{
-  background-color: #b80f1a;
 }
