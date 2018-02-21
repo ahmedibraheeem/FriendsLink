@@ -4,8 +4,7 @@ a social media website that I created using HTML, CSS, PHP, javascript and mysql
 if you need any further information don't hesitate to contact me 
 
 those are some images from the project
-<img src="https://imgur.com/a/CgPBf" alt="imgur.com">
-<img src="https://imgur.com/a/CgPBf">
+<img src="https://cdn.pbrd.co/images/H8H8i9C.png">
 E-mail: ahmedibraheeem100@gmail.com 
 or
 whatsAPP: +201288395055
