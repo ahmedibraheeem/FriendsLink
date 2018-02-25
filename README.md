@@ -22,8 +22,8 @@ or send an E-mail here: <br />
                   method="POST">
                 <p>Name: </p><input type="text" name="name"><br />
                 <p>Email: </p><input type="email" name="_replyto"> <br />
-                <p>Message:</p><input type="text" name="Message"><br />
-                <input type="submit" value="Send">
+                <p>Message:</p><input type="text" name="Message" width="20cm"><br />
+                <input type="submit" value="Send"><br />
 </form>
       </body>
       Copyrights &copy; Ahmad Ibrahim Mohamed
