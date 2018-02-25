@@ -26,5 +26,5 @@ or send an E-mail here: <br />
                 <input type="submit" value="Send">
 </form>
       </body>
+      Copyrights &copy; Ahmad Ibrahim Mohamed
 </html>
-            
