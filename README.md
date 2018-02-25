@@ -22,7 +22,7 @@ or send an E-mail here: <br />
                   method="POST">
                 <p>Name: </p><input type="text" name="name"><br />
                 <p>Email: </p><input type="email" name="_replyto"> <br />
-                <p>Message:</p><input type="text" name="Message" width="20cm"><br />
+                <p>Message:</p><input type="text" name="Message" size="50"><br />
                 <input type="submit" value="Send"><br />
 </form>
       </body>
