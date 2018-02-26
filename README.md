@@ -23,9 +23,8 @@ or send an E-mail here: <br />
                 <p>Name: </p><input type="text" name="name"><br />
                 <p>Email: </p><input type="email" name="_replyto"> <br />
                 <p>Message:</p><input type="text" name="Message" size="50"><br />
-                <style>
-                <input type="submit" value="Send" padding-bottom: 20px; ><br />
-                </style>
+                <input type="submit" value="Send" margin-bottom: 20px ><br />
+                
 </form>
       </body>
       Copyrights &copy; Ahmad Ibrahim Mohamed
