@@ -22,10 +22,10 @@ or send an E-mail here: <br />
                   method="POST">
                 <p>Name: </p><input type="text" name="name"><br />
                 <p>Email: </p><input type="email" name="_replyto"> <br />
-                <p>Message:</p><input type="text" name="Message" size="50"><br />
-                <input type="submit" value="Send" margin-bottom: 20px ><br />
+                <p>Message:</p><input type="text" name="Message" style="width: 150px;"><br />
+                <input type="submit" value="Send"><br />
                 
-</form>
+</form
       </body>
       Copyrights &copy; Ahmad Ibrahim Mohamed
 </html>
