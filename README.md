@@ -24,7 +24,7 @@ or send an E-mail here: <br />
                 <p>Email: </p><input type="email" name="_replyto"> <br />
                 <p>Message:</p><input type="text" name="Message" size="50" ><br />
                 <input type="submit" value="Send"><br />
-         </form
+            </form>
       
  </body>
                
