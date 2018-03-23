@@ -1,5 +1,5 @@
 # FriendsLink
-a social media website that I created using HTML, CSS, PHP, javascript and mysql
+a social media website that I created using HTML, CSS, PHP, javascript, mysql and Xampp
 
 
 those are some images from the project:
